@@ -1,0 +1,76 @@
+{% comment %} {% if user.is_authenticated %}
+   Welcome back, {{ user.username }} 
+{% else %}
+   Please <a href="{% url 'login' %}?next={{request.path}}">Login</a>
+{% endif %} {% endcomment %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href=" {% static 'main/css/main.css' %}" type="text/css" media="all" />
+    <title>The Spoken Word</title>
+</head>
+
+<body>
+    <!-- shadow_bottom -->
+    <div class="shadow_bottom">
+        <!-- header -->
+        <header class="header">
+            <div class="logo"><a href="/">SN</a></div>
+            <div class="login_buttom">
+                <a href="login/"><button>login</button></a>
+            </div>
+        </header>
+        <!-- header -->
+        <!-- navbar -->
+        <div class="navbar-container">
+            <nav class="navbar">
+                <ul class="navbar_list">
+                    <li class="navbar_item">My feed</li>
+                    <li class="navbar_item">All streams</li>
+                    <li class="navbar_item">Development</li>
+                    <li class="navbar_item">Desing</li>
+                    <li class="navbar_item">Management</li>
+                    <li class="navbar_item">PopSci</li>
+                </ul>
+            </nav>
+        </div>
+        <!-- navbar -->
+    </div>
+    <!-- shadow_bottom -->
+
+    <div class="main_container">
+        {% for post in post_list %}
+        <div class="post">
+            <div class="user-link">
+                <div class="user_logo"><img src="{{ post.img.url }}" alt="user logo" /></div>
+                <div class="user_name"><span>{{ post.author }}</span></div>
+            </div>
+            <div class="info-post">
+                <ul class="info_post_list">
+                    <li class="info_post_item">views: 0</li>
+                    <li class="info_post_item">date of publication: {{ post.data }}</li>
+                </ul>
+            </div>
+            <div class="line"></div>
+            <div class="title">
+                <span>{{ post.title }}</span>
+            </div>
+            <div class="subtitle">
+                {{ post.subtitle }}
+            </div>
+            <div class="post_img"><img src="{{ post.img.url }}" alt="post_img" /></div>
+            <div class="post_description">
+                <p>{{ post.description }}</p>
+            </div>
+            <div class="read_more_button"><a href="{{ post.id }}"><button>Read more</button></a></div>
+        </div>
+
+        {% endfor %}
+    </div>
+</body>
+
+</html>

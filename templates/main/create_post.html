@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href=" {% static 'main/css/create.css' %}" type="text/css" media="all" />
+<head>
+    <title>Create Post</title>
+</head>
+<body>
+    <h2>Create a New Post</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_title">Title:</label>
+            {{ form.title }}
+        </div>
+        <div class="form-group">
+            <label for="id_subtitle">Subtitle:</label>
+            {{ form.subtitle }}
+        </div>
+        <div class="form-group">
+            <label for="id_img">Image:</label>
+            {{ form.img }}
+        </div>
+        <div class="form-group">
+            <label for="id_description">Description:</label>
+            {{ form.description }}
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</body>
+</html>
