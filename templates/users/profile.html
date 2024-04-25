@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        /* Общие стили */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Стили для заголовка профиля */
+        .profile-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .profile-header h1 {
+            margin: 0;
+            color: #333;
+        }
+
+        .profile-header p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        /* Стили для дополнительной информации профиля */
+        .profile-info {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .profile-info h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .profile-info p {
+            margin: 5px 0;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="profile-header">
+            <img src="{% if user.profile.picture %}{{ user.profile.picture.url }}{% else %}path_to_default_image.jpg{% endif %}" alt="Profile Picture">
+            <h1>{{ user.username }}</h1>
+            <p>{{ user.email }}</p>
+        </div>
+
+        <div class="profile-info">
+            <h2>Additional Information</h2>
+            <p>Add any additional information about the user here.</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
