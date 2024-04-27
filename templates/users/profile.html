@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,7 +72,12 @@
 
     <div class="container">
         <div class="profile-header">
-            <img src="{% if user.profile.picture %}{{ user.profile.picture.url }}{% else %}path_to_default_image.jpg{% endif %}" alt="Profile Picture">
+            <!-- Используем условный оператор для отображения фото профиля или фото по умолчанию -->
+            {% if user.avatar %}
+                <img src="{{ user.avatar.url }}" alt="Profile Picture">
+            {% else %}
+                <img src="{% static 'users/avatars/default.png' %}" alt="Default Profile Picture">
+            {% endif %}
             <h1>{{ user.username }}</h1>
             <p>{{ user.email }}</p>
         </div>
