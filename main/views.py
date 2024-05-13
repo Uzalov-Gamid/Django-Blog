@@ -43,4 +43,4 @@ class PostDetail(View):
 
     def get(self, request, pk):
         post = Post.objects.get(id=pk)
-        return render(request, 'main/main_detail.html', {'post': post})
+        return render(request, 'main/post_detail.html', {'post': post})
