@@ -1,93 +1,102 @@
-{% load static %}
 
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
-    <style>
-        /* Общие стили */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Стили для заголовка профиля */
-        .profile-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .profile-header img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 10px;
-        }
-
-        .profile-header h1 {
-            margin: 0;
-            color: #333;
-        }
-
-        .profile-header p {
-            margin: 5px 0;
-            color: #666;
-        }
-
-        /* Стили для дополнительной информации профиля */
-        .profile-info {
-            background-color: #f9f9f9;
-            padding: 10px;
-            border-radius: 8px;
-        }
-
-        .profile-info h2 {
-            margin-top: 0;
-            color: #333;
-        }
-
-        .profile-info p {
-            margin: 5px 0;
-            color: #666;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="{% static 'users/css/profile.css' %}">
+  <title>My profile</title>
 </head>
 
 <body>
-
-    <div class="container">
-        <div class="profile-header">
-            <!-- Используем условный оператор для отображения фото профиля или фото по умолчанию -->
-            {% if user.avatar %}
-                <img src="{{ user.avatar.url }}" alt="Profile Picture">
-            {% else %}
-                <img src="{% static 'users/avatars/default.png' %}" alt="Default Profile Picture">
-            {% endif %}
-            <h1>{{ user.username }}</h1>
-            <p>{{ user.email }}</p>
-        </div>
-
-        <div class="profile-info">
-            <h2>Additional Information</h2>
-            <p>Add any additional information about the user here.</p>
-        </div>
+  <!-- shadow_bottom -->
+  <div class="shadow_bottom">
+    <!-- header -->
+    <header class="header">
+      <div class="logo"><a href="/">SN</a></div>
+      <div class="login_buttom">
+        <a href="/"><button>Back</button></a>
+      </div>
+    </header>
+    <!-- header -->
+    <!-- navbar -->
+    <div class="navbar-container">
+      <nav class="navbar">
+        <ul class="navbar_list">
+          <li class="navbar_item">My feed</li>
+          <li class="navbar_item">All streams</li>
+          <li class="navbar_item">Development</li>
+          <li class="navbar_item">Desing</li>
+          <li class="navbar_item">Management</li>
+          <li class="navbar_item">PopSci</li>
+        </ul>
+      </nav>
     </div>
+    <!-- navbar -->
+  </div>
+  <!-- shadow_bottom -->
 
+  <!-- top_container -->
+
+  <div class="top_container">
+    <div class="user_photo">
+        {% if user.avatar %}
+            <img src="{{ user.avatar.url }}" alt="Profile Picture">
+        {% else %}
+            <img src="{% static 'users/avatars/default.png' %}" alt="Default Profile Picture">
+    {% endif %}
+    </div>
+    <div class="user_info">
+      <div class="user_text_info">
+        <div class="title">
+          <h1>{{ user.username }}</h1>
+        </div>
+        <div class="user_mail">
+          <p>{{ user.email }}</p>
+        </div>
+      </div>
+      <div class="line"></div>
+      <div class="user_info_container">
+        <a class="create_buttom" href="create/"><button>Create a new post</button></a>
+        <a class="order_buttom" href=" #"><button>Create a new order</button></a>
+        <a class="edit_buttom" href=" #"><button>Edit a profile</button></a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class=" center_container">
+    <div class="my_posts_list">
+      <h1>My posts:</h1>
+    </div>
+    <div class="line"></div>
+    <div class="my_posts_items">
+      <div class="post">
+        <div class="title">
+          <span>{{ post.title }}</span>
+        </div>
+        <div class="subtitle">
+          {{ post.subtitle }}
+        </div>
+        <div class="line"></div>
+        <div class="info-post">
+          <ul class="info_post_list">
+            <li class="info_post_item">views: 0</li>
+            <li class="info_post_item">date of publication: {{ post.data }}</li>
+          </ul>
+        </div>
+        <div class="button_of_post">
+          <a class="delete_button" href="{{ post.id }}"><button>Delete</button></a>
+          <a class="read_more_button" href="{{ post.id }}"><button>Read more</button></a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- main_container -->
 </body>
 
 </html>

@@ -28,11 +28,12 @@
 }
 
 .login_buttom button {
-  width: 50px;
-  height: 25px;
+
+  width: 60px;
+  height: 30px;
   background-color: #0085ff;
   color: #fff;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 900;
   border: none;
   border-radius: 10px;
@@ -148,16 +149,18 @@
 }
 
 .read_more_button button{
-  width: 100px;
+
+  width: auto;
+  height: 33px;
+  text-align: center;
+  padding: 8px;
   background-color: #0085ff;
   color: #fff;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 900;
-  padding: 10px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.3);
-  margin-bottom: 20px;
 }
 /* <!-- main --> */
